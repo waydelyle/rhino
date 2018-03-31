@@ -127,15 +127,24 @@ class ClientService
 
         $numbers = $this->stripFromString(
             [
+                'n/a',
                 '-',
                 ',',
                 ' ',
                 '+',
+                '(',
+                ')',
             ],
-            $string
+            strtolower($string)
         );
 
-        if (!is_numeric((int) $numbers)) {
+        $numbers = filter_var($numbers, FILTER_SANITIZE_SPECIAL_CHARS);
+
+        if ($numbers === false) {
+            dd('here');
+        }
+
+        if (!is_numeric($numbers) || $string === '') {
             return json_encode([]);
         }
 
@@ -159,7 +168,7 @@ class ClientService
                 'n/a',
                 ' ',
             ],
-            $string
+            strtolower($string)
         );
 
         if ($string === '' || strpos($string, '@') === false) {
