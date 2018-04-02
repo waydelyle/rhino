@@ -4,6 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Client
+ * @package App
+ */
 class Client extends Model
 {
     /**
@@ -23,6 +27,8 @@ class Client extends Model
     ];
 
     /**
+     * Json decode emails.
+     *
      * @param string $value
      * @return array
      */
@@ -32,6 +38,8 @@ class Client extends Model
     }
 
     /**
+     * Json decode phone numbers.
+     *
      * @param string $value
      * @return array
      */

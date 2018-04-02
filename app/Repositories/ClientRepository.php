@@ -25,6 +25,8 @@ class ClientRepository
     }
 
     /**
+     * Paginate client data.
+     *
      * @param int $perPage
      * @return mixed
      */

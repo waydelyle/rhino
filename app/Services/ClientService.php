@@ -35,6 +35,8 @@ class ClientService
     }
 
     /**
+     * Map client data to match database.
+     *
      * @param Collection $data
      * @return array
      */
@@ -62,6 +64,8 @@ class ClientService
     }
 
     /**
+     * Collect all client data from a csv file.
+     *
      * @param string $path
      * @return array
      */
@@ -73,6 +77,8 @@ class ClientService
     }
 
     /**
+     * Collect and save all client data from a csv file.
+     *
      * @param string $path
      * @return bool
      */
@@ -84,6 +90,8 @@ class ClientService
     }
 
     /**
+     * Batch insert clients.
+     *
      * @param array $clients
      * @return bool
      */
@@ -95,6 +103,8 @@ class ClientService
     }
 
     /**
+     * Parse valid dates to date string.
+     *
      * @param string $date
      * @return string
      */
@@ -114,6 +124,8 @@ class ClientService
     }
 
     /**
+     * Clean and generate phone numbers in a json array.
+     *
      * @param string $string
      * @return string
      */
@@ -148,6 +160,8 @@ class ClientService
     }
 
     /**
+     * Clean and generate phone email addresses in a json array.
+     *
      * @param string $string
      * @return string
      */
@@ -181,6 +195,8 @@ class ClientService
     }
 
     /**
+     * Strip characters from string.
+     *
      * @param array $characters
      * @param string $string
      * @return string
@@ -195,6 +211,8 @@ class ClientService
     }
 
     /**
+     * Paginate client data.
+     *
      * @return mixed
      */
     public function paginate()

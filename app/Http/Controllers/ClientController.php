@@ -35,7 +35,7 @@ class ClientController extends Controller
         $clients = $this->clientService->paginate();
 
         if (!$clients->count()) {
-            return redirect()->back()->withErrors(['Please upload a client csv.']);
+            return redirect('/')->withErrors(['Please upload a client csv.']);
         }
 
         return view(
@@ -52,8 +52,6 @@ class ClientController extends Controller
      */
     public function store(FileRequest $request)
     {
-        Client::truncate();
-
         /** @var UploadedFile $file */
         $file = $request->file('file');
 

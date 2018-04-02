@@ -20,6 +20,11 @@
             margin: 0;
         }
 
+        nav {
+            width: 100%;
+            height: 40px;
+        }
+
         .flex-center {
             align-items: center;
             display: flex;
@@ -89,14 +94,13 @@
     </style>
 </head>
 <body>
+<nav>
+    <div class="top-right links">
+        <a href="{{ url('/') }}">Home</a>
+        <a href="{{ route('clients.index') }}">Clients</a>
+    </div>
+</nav>
 <div class="flex-center position-ref">
-    <nav>
-        <div class="top-right links">
-            <a href="{{ url('/') }}">Home</a>
-            <a href="{{ route('clients.index') }}">Clients</a>
-        </div>
-    </nav>
-
     <div class="content">
         @yield('content')
 

@@ -12,6 +12,8 @@ use Illuminate\Support\Collection;
 class CsvService
 {
     /**
+     * Collect data from csv.
+     *
      * @param string $path
      * @return Collection
      */
