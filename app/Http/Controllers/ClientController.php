@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Client;
 use App\Http\Requests\FileRequest;
 use App\Services\ClientService;
 use Illuminate\Http\UploadedFile;
