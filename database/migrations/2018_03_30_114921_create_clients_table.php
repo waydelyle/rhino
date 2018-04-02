@@ -20,7 +20,6 @@ class CreateClientsTable extends Migration
             $table->string('phone_numbers');
             $table->string('emails');
             $table->string('join_date');
-            $table->timestamps();
         });
     }
 

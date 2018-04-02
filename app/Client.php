@@ -11,11 +11,6 @@ use Illuminate\Database\Eloquent\Model;
 class Client extends Model
 {
     /**
-     * @var bool
-     */
-    public $timestamps = true;
-
-    /**
      * @var array
      */
     protected $fillable = [
