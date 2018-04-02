@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Client;
 use App\Http\Requests\FileRequest;
 use App\Services\ClientService;
 use Illuminate\Http\UploadedFile;
@@ -40,7 +41,7 @@ class ClientController extends Controller
         return view(
             'clients.index',
             [
-                'clients' => $this->clientService->paginate(),
+                'clients' => $clients,
             ]
         );
     }
@@ -51,6 +52,8 @@ class ClientController extends Controller
      */
     public function store(FileRequest $request)
     {
+        Client::truncate();
+
         /** @var UploadedFile $file */
         $file = $request->file('file');
 

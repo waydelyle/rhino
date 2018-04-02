@@ -51,13 +51,11 @@ class ClientService
         })
         ->forget([0, 1])
         ->filter(function ($client) {
-            return !in_array(
-                strtolower($client['name']),
-                [
-                    'cpt',
-                    'gauteng',
-                    'kzn',
-                ]
+            return !(
+                $client['publication'] === ''
+                && $client['phone_numbers'] === '[]'
+                && $client['emails'] === '[]'
+                && $client['join_date'] === ''
             );
         })
         ->toArray();
@@ -107,7 +105,7 @@ class ClientService
         }
 
         try {
-            $parsedDate = Carbon::parse($date);
+            $parsedDate = Carbon::parse(trim($date));
         } catch (\Exception $exception) {
             return '';
         }
@@ -135,14 +133,10 @@ class ClientService
                 '(',
                 ')',
             ],
-            strtolower($string)
+            $string
         );
 
         $numbers = filter_var($numbers, FILTER_SANITIZE_SPECIAL_CHARS);
-
-        if ($numbers === false) {
-            dd('here');
-        }
 
         if (!is_numeric($numbers) || $string === '') {
             return json_encode([]);
@@ -168,7 +162,7 @@ class ClientService
                 'n/a',
                 ' ',
             ],
-            strtolower($string)
+            $string
         );
 
         if ($string === '' || strpos($string, '@') === false) {
@@ -179,10 +173,8 @@ class ClientService
 
         return Collection::make($emails)
             ->map(function ($email) {
-                $email = filter_var($email, FILTER_SANITIZE_EMAIL);
-
                 return [
-                    'email' => $email,
+                    'email' => filter_var($email, FILTER_SANITIZE_EMAIL),
                     'valid' => filter_var($email, FILTER_VALIDATE_EMAIL) ? true : false,
                 ];
             })->toJson();
@@ -196,7 +188,7 @@ class ClientService
     protected function stripFromString(array $characters, string $string): string
     {
         foreach ($characters as $character) {
-            $string = str_replace($character, '', $string);
+            $string = str_replace($character, '', strtolower($string));
         }
 
         return $string;

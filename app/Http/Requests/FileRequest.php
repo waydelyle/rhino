@@ -24,7 +24,6 @@ class FileRequest extends FormRequest
     public function rules()
     {
         return [
-//            'file' => 'required|file|mimes:xls,xlt,xla,xlsx'
             'file' => 'required|file|mimes:csv,txt'
         ];
     }
